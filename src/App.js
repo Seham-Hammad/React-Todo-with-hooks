@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import TodoForm from './components/TodoForm';
+import TodoList from './components/TodoList'
+import Typography from "@material-ui/core/Typography";
+
 import './App.css';
 
 function App() {
+  const [todos, setTodos] = useState([])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Typography component="h4" variant="h4">
+        Todos App
+
+     </Typography>
+
+      < TodoForm saveTodo={(todoText) => {
+        const trimmedText = todoText.trim();
+        if (trimmedText.length > 0) {
+          setTodos([...todos, trimmedText]);
+        }
+      }} />
+      <TodoList todos={todos}
+        deleteTodo={(index) => {
+          const newTodo = todos.filter((_, idx) => idx !== index)
+          setTodos(newTodo)
+        }} />
     </div>
   );
 }
