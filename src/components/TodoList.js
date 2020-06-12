@@ -7,8 +7,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 
-//import DeleteIcon from '@material-ui/icons/Delete';
-
 const TodoList = ({ todos, deleteTodo }) => (
     <List>
         {todos.map((todo, index) => (
